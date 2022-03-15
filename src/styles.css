@@ -1,0 +1,76 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.dial {
+  position: relative;
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  border: 5px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  /* z-index: 10; */
+  /* transform: rotate(-90deg); */
+}
+
+.dial::before {
+  content: "";
+  position: absolute;
+  inset: -30px;
+  border-radius: 50%;
+  z-index: -1;
+  background: rgb(255, 0, 0);
+  background: linear-gradient(
+    -35deg,
+    rgba(255, 0, 0, 1) 16%,
+    rgba(253, 239, 29, 1) 30%,
+    rgba(225, 242, 39, 1) 58%,
+    rgba(137, 252, 69, 1) 69%
+  );
+}
+
+.outer-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  background: #eee;
+}
+
+.inner-circle {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  background: gray;
+  position: relative;
+  transition: all 1s;
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40%;
+  transform-origin: 15%;
+  /* transform-origin: left; */
+}
+
+.needle {
+  position: absolute;
+  top: 50%;
+  left: 90%;
+  transform: translateY(-50%);
+  width: 100px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 12.5px 0 12.5px 75px;
+  border-color: transparent transparent transparent #007bff;
+}
