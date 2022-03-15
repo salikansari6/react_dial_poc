@@ -9,7 +9,7 @@ export default function App() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve({
-          credit: 410
+          credit: 600
         });
       }, 1000);
     });

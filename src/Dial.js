@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import needle from "./needle.png";
+import gradientOutline from "./gradient_outline.png";
 
 const Dial = ({ value, initialAnglePosn }) => {
   const clamp = (value, start, end) => Math.min(Math.max(value, start), end);
@@ -57,6 +58,11 @@ const Dial = ({ value, initialAnglePosn }) => {
 
   return (
     <div className="dial">
+      <img
+        src={gradientOutline}
+        className="gradient-outline"
+        alt="dial outline"
+      />
       <div className="outer-circle">
         <div
           className="inner-circle"

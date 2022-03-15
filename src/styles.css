@@ -21,7 +21,7 @@
   /* transform: rotate(-90deg); */
 }
 
-.dial::before {
+/* .dial::before {
   content: "";
   position: absolute;
   inset: -30px;
@@ -35,9 +35,16 @@
     rgba(225, 242, 39, 1) 58%,
     rgba(137, 252, 69, 1) 69%
   );
+} */
+
+.gradient-outline {
+  position: absolute;
+  width: 100%;
+  inset: 0;
 }
 
 .outer-circle {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
