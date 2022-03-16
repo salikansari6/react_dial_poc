@@ -2,9 +2,16 @@
   font-family: sans-serif;
   text-align: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  background: linear-gradient(
+    335.3deg,
+    #131b2e 13.93%,
+    #2c3a5c 57.29%,
+    #1d2f54 99.76%
+  );
 }
 
 .dial {
@@ -12,30 +19,10 @@
   height: 250px;
   width: 250px;
   border-radius: 50%;
-  /* border: 5px solid black; */
   display: flex;
   justify-content: center;
   align-items: center;
-  background: white;
-  /* z-index: 10; */
-  /* transform: rotate(-90deg); */
 }
-
-/* .dial::before {
-  content: "";
-  position: absolute;
-  inset: -30px;
-  border-radius: 50%;
-  z-index: -1;
-  background: rgb(255, 0, 0);
-  background: linear-gradient(
-    -35deg,
-    rgba(255, 0, 0, 1) 16%,
-    rgba(253, 239, 29, 1) 30%,
-    rgba(225, 242, 39, 1) 58%,
-    rgba(137, 252, 69, 1) 69%
-  );
-} */
 
 .gradient-outline {
   position: absolute;
@@ -52,7 +39,7 @@
   border-radius: 50%;
   height: 150px;
   width: 150px;
-  background: #eee;
+  /* background: #eee; */
 }
 
 .inner-circle {
@@ -62,23 +49,35 @@
   background: gray;
   position: relative;
   transition: all 1s;
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 40%;
-  transform-origin: 15%;
-  /* transform-origin: left; */
 }
 
 .needle {
   position: absolute;
   top: 50%;
   left: 90%;
+  width: 70px;
   transform: translateY(-50%);
-  width: 100px;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 12.5px 0 12.5px 75px;
-  border-color: transparent transparent transparent #007bff;
+}
+
+.credit-input {
+  margin-top: 50px;
+  display: flex;
+}
+
+.credit-input input {
+  padding: 4px;
+}
+
+.credit-input small {
+  display: block;
+}
+
+.credit-input label {
+  color: white;
+  margin-right: 16px;
+}
+
+.checkBtn {
+  padding: 4px 8px;
+  margin-top: 16px;
 }

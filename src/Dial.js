@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
-import needle from "./needle.png";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import needle from "./needle2.png";
 import gradientOutline from "./gradient_outline.png";
 
 const Dial = ({ value, initialAnglePosn }) => {
@@ -7,37 +7,40 @@ const Dial = ({ value, initialAnglePosn }) => {
 
   const [rotation, setRotation] = useState(initialAnglePosn);
 
-  const ranges = {
-    excellent: {
-      startAngle: -90,
-      endAngle: -135,
-      breakpointStart: 750,
-      breakpointEnd: 900
-    },
-    good: {
-      startAngle: 0,
-      endAngle: -90,
-      breakpointStart: 600,
-      breakpointEnd: 750
-    },
-    bad: {
-      startAngle: 90,
-      endAngle: 0,
-      breakpointStart: 0,
-      breakpointEnd: 600
-    }
-  };
+  const ranges = useMemo(
+    () => ({
+      excellent: {
+        startAngle: -90,
+        endAngle: -135,
+        breakpointStart: 750,
+        breakpointEnd: 900
+      },
+      good: {
+        startAngle: 0,
+        endAngle: -90,
+        breakpointStart: 600,
+        breakpointEnd: 750
+      },
+      bad: {
+        startAngle: 90,
+        endAngle: 0,
+        breakpointStart: 0,
+        breakpointEnd: 600
+      }
+    }),
+    []
+  );
 
   const calculateRotation = useCallback(
     (value) => {
-      let range;
-      if (value > 750) {
-        range = ranges.excellent;
-      } else if (value <= 750 && value >= 600) {
-        range = ranges.good;
-      } else {
-        range = ranges.bad;
+      let range = Object.values(ranges).find(
+        (r) => value <= r.breakpointEnd && value >= r.breakpointStart
+      );
+
+      if (!range) {
+        return initialAnglePosn;
       }
+
       const valuePercentage =
         (value - range.breakpointStart) /
         (range.breakpointEnd - range.breakpointStart);
@@ -47,7 +50,7 @@ const Dial = ({ value, initialAnglePosn }) => {
 
       return range.startAngle + addedRotation;
     },
-    [ranges.bad, ranges.excellent, ranges.good]
+    [ranges, initialAnglePosn]
   );
 
   useEffect(() => {
@@ -70,7 +73,7 @@ const Dial = ({ value, initialAnglePosn }) => {
             transform: `rotate(${rotation}deg)`
           }}
         >
-          <div className="needle" />
+          <img src={needle} alt="needle" className="needle" />
         </div>
       </div>
     </div>
